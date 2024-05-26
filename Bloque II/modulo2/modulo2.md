@@ -149,6 +149,14 @@ El DS en este punto no es viable (pese a parecer una gran mejora); en el registr
     </div>
 </div>
 
+<div align="center">
+	<br>
+	<a href="https://github.com/RaulJDlCRUZ/Computer-organization/blob/master/res/example.svg">
+		<img src="header.svg" width="800" height="400" alt="Click to see the source">
+	</a>
+	<br>
+</div>
+
 <center>Banco de registros tras ejecutarse Codigo1.s con DS</center>
 
 ### 3. Aplique la técnica de desenrrollado de bucles al código anterior
