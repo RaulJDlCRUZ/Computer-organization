@@ -152,7 +152,7 @@ El DS en este punto no es viable (pese a parecer una gran mejora); en el registr
 <div align="center">
 	<br>
 	<a href="https://github.com/RaulJDlCRUZ/Computer-organization/blob/master/res/example.svg">
-		<img src="header.svg" width="800" height="400" alt="Click to see the source">
+		<img src="example.svg" width="800" height="400" alt="¡Imagen original aquí!">
 	</a>
 	<br>
 </div>
