@@ -1,0 +1,281 @@
+gcc -O0 -DROWS=1 -DCOLS=<valor> -o cacherowmajor cache_row_major.c
+
+----------ROW 1-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           101.224      instructions:u                                                       ( +-  0,00% )
+             1.760      L1-dcache-loads-misses           #    7,61% of all L1-dcache accesses  ( +-  0,37% )
+            23.120      L1-dcache-loads
+
+         0,0007305 +- 0,0000152 seconds time elapsed  ( +-  2,09% )
+
+-----COL 100---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           101.225      instructions:u                                                       ( +-  0,00% )
+             1.752      L1-dcache-loads-misses           #    7,58% of all L1-dcache accesses  ( +-  0,46% )
+            23.120      L1-dcache-loads
+
+         0,0006491 +- 0,0000141 seconds time elapsed  ( +-  2,18% )
+
+-----COL 200---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           101.222      instructions:u                                                       ( +-  0,00% )
+             1.754      L1-dcache-loads-misses           #    7,59% of all L1-dcache accesses  ( +-  0,42% )
+            23.120      L1-dcache-loads                                                      ( +-  0,00% )
+
+        0,00060179 +- 0,00000920 seconds time elapsed  ( +-  1,53% )
+
+-----COL 300---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           101.224      instructions:u                                                       ( +-  0,00% )
+             2.101      L1-dcache-loads-misses           #    9,09% of all L1-dcache accesses  ( +-  2,32% )
+            23.120      L1-dcache-loads
+
+          0,001336 +- 0,000125 seconds time elapsed  ( +-  9,39% )
+
+-----COL 500---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           101.222      instructions:u                                                       ( +-  0,00% )
+             1.727      L1-dcache-loads-misses           #    7,47% of all L1-dcache accesses  ( +-  0,37% )
+            23.120      L1-dcache-loads
+
+         0,0007254 +- 0,0000175 seconds time elapsed  ( +-  2,42% )
+
+----------ROW 100-----------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           108.152      instructions:u                                                       ( +-  0,00% )
+             1.772      L1-dcache-loads-misses           #    6,79% of all L1-dcache accesses  ( +-  0,49% )
+            26.090      L1-dcache-loads
+
+         0,0008201 +- 0,0000218 seconds time elapsed  ( +-  2,66% )
+
+-----COL 100---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+         3.342.491      instructions:u                                                       ( +-  0,00% )
+             7.432      L1-dcache-loads-misses           #    1,04% of all L1-dcache accesses  ( +-  0,45% )
+           712.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+         0,0013425 +- 0,0000633 seconds time elapsed  ( +-  4,72% )
+
+-----COL 200---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+         6.609.504      instructions:u                                                       ( +-  0,00% )
+            13.056      L1-dcache-loads-misses           #    0,93% of all L1-dcache accesses  ( +-  0,05% )
+         1.405.160      L1-dcache-loads
+
+         0,0017618 +- 0,0000947 seconds time elapsed  ( +-  5,37% )
+
+-----COL 300---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+         6.916.413      instructions:u                                                       ( +-  0,00% )
+            18.830      L1-dcache-loads-misses           #    0,90% of all L1-dcache accesses  ( +-  0,06% )
+         2.098.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+         0,0054880 +- 0,0000917 seconds time elapsed  ( +-  1,67% )
+
+-----COL 500---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+        11.470.432      instructions:u                                                       ( +-  0,00% )
+            30.281      L1-dcache-loads-misses           #    0,87% of all L1-dcache accesses  ( +-  0,06% )
+         3.484.156      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,003824 +- 0,000625 seconds time elapsed  ( +- 16,34% )
+
+----------ROW 1000----------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           171.152      instructions:u                                                       ( +-  0,00% )
+             1.742      L1-dcache-loads-misses           #    3,28% of all L1-dcache accesses  ( +-  2,20% )
+            53.090      L1-dcache-loads
+
+         0,0007696 +- 0,0000166 seconds time elapsed  ( +-  2,15% )
+
+-----COL 100---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+        32.808.582      instructions:u                                                       ( +-  0,00% )
+            58.286      L1-dcache-loads-misses           #    0,84% of all L1-dcache accesses  ( +-  0,06% )
+         6.976.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,005341 +- 0,000891 seconds time elapsed  ( +- 16,69% )
+
+-----COL 200---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+        65.775.679      instructions:u                                                       ( +-  0,00% )
+           115.077      L1-dcache-loads-misses           #    0,82% of all L1-dcache accesses  ( +-  0,05% )
+        13.969.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,006308 +- 0,000195 seconds time elapsed  ( +-  3,09% )
+
+-----COL 300---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+        68.872.677      instructions:u                                                       ( +-  0,00% )
+           171.966      L1-dcache-loads-misses           #    0,82% of all L1-dcache accesses  ( +-  0,05% )
+        20.962.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,008247 +- 0,000485 seconds time elapsed  ( +-  5,88% )
+
+-----COL 500---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       114.826.876      instructions:u                                                       ( +-  0,00% )
+           285.295      L1-dcache-loads-misses           #    0,82% of all L1-dcache accesses  ( +-  0,05% )
+        34.948.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,012934 +- 0,000320 seconds time elapsed  ( +-  2,47% )
+
+----------ROW 5000----------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           451.156      instructions:u                                                       ( +-  0,00% )
+             1.775      L1-dcache-loads-misses           #    1,03% of all L1-dcache accesses  ( +-  0,43% )
+           173.090      L1-dcache-loads
+
+         0,0008637 +- 0,0000202 seconds time elapsed  ( +-  2,34% )
+
+-----COL 100---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       163.768.979      instructions:u                                                       ( +-  0,00% )
+           284.153      L1-dcache-loads-misses           #    0,82% of all L1-dcache accesses  ( +-  0,04% )
+        34.816.148      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,016061 +- 0,000640 seconds time elapsed  ( +-  3,98% )
+
+-----COL 200---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       328.735.956      instructions:u                                                       ( +-  0,00% )
+           598.507      L1-dcache-loads-misses           #    0,86% of all L1-dcache accesses  ( +-  0,01% )
+        69.809.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,02813 +- 0,00242 seconds time elapsed  ( +-  8,59% )
+
+-----COL 300---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       344.232.838      instructions:u                                                       ( +-  0,00% )
+           912.030      L1-dcache-loads-misses           #    0,87% of all L1-dcache accesses  ( +-  0,45% )
+       104.802.102      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,03587 +- 0,00128 seconds time elapsed  ( +-  3,57% )
+
+-----COL 500---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       574.186.799      instructions:u                                                       ( +-  0,00% )
+         1.543.352      L1-dcache-loads-misses           #    0,88% of all L1-dcache accesses  ( +-  0,31% )
+       174.768.662      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,06133 +- 0,00247 seconds time elapsed  ( +-  4,03% )
+
+----------ROW 10000---------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+           801.158      instructions:u                                                       ( +-  0,00% )
+             1.728      L1-dcache-loads-misses           #    0,53% of all L1-dcache accesses  ( +-  0,33% )
+           323.090      L1-dcache-loads
+
+          0,002341 +- 0,000199 seconds time elapsed  ( +-  8,51% )
+
+-----COL 100---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       327.468.955      instructions:u                                                       ( +-  0,00% )
+           597.339      L1-dcache-loads-misses           #    0,86% of all L1-dcache accesses  ( +-  0,02% )
+        69.616.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,02902 +- 0,00292 seconds time elapsed  ( +- 10,06% )
+
+-----COL 200---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       657.435.918      instructions:u                                                       ( +-  0,00% )
+         1.224.704      L1-dcache-loads-misses           #    0,88% of all L1-dcache accesses  ( +-  0,34% )
+       139.609.150      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,05211 +- 0,00129 seconds time elapsed  ( +-  2,48% )
+
+-----COL 300---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+       688.432.872      instructions:u                                                       ( +-  0,00% )
+         1.853.555      L1-dcache-loads-misses           #    0,88% of all L1-dcache accesses  ( +-  0,16% )
+       209.598.237      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,07609 +- 0,00387 seconds time elapsed  ( +-  5,08% )
+
+-----COL 500---
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cacherowmajor
+
+ Performance counter stats for './cacherowmajor' (10 runs):
+
+     1.148.387.207      instructions:u                                                       ( +-  0,00% )
+         3.077.844      L1-dcache-loads-misses           #    0,88% of all L1-dcache accesses  ( +-  0,17% )
+       349.587.192      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,11680 +- 0,00220 seconds time elapsed  ( +-  1,88% )

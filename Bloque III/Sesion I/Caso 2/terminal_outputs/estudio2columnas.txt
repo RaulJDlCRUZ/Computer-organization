@@ -1,0 +1,279 @@
+----------ROW 1-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           101.224      instructions:u                                                       ( +-  0,00% )
+             1.733      L1-dcache-loads-misses           #    7,50% of all L1-dcache accesses  ( +-  3,15% )
+            23.120      L1-dcache-loads                                                      ( +-  0,02% )
+
+         0,0006459 +- 0,0000120 seconds time elapsed  ( +-  1,86% )
+
+-----COL 100-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           108.152      instructions:u                                                       ( +-  0,00% )
+             1.688      L1-dcache-loads-misses           #    6,47% of all L1-dcache accesses  ( +-  0,38% )
+            26.090      L1-dcache-loads
+
+        0,00062958 +- 0,00000837 seconds time elapsed  ( +-  1,33% )
+
+-----COL 200-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           115.154      instructions:u                                                       ( +-  0,00% )
+             1.701      L1-dcache-loads-misses           #    5,85% of all L1-dcache accesses  ( +-  4,06% )
+            29.090      L1-dcache-loads                                                      ( +-  0,00% )
+
+         0,0006565 +- 0,0000164 seconds time elapsed  ( +-  2,49% )
+
+-----COL 300-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           122.152      instructions:u                                                       ( +-  0,00% )
+             1.727      L1-dcache-loads-misses           #    5,38% of all L1-dcache accesses  ( +-  0,38% )
+            32.090      L1-dcache-loads
+
+         0,0008599 +- 0,0000262 seconds time elapsed  ( +-  3,04% )
+
+-----COL 500-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           136.155      instructions:u                                                       ( +-  0,00% )
+             1.742      L1-dcache-loads-misses           #    4,57% of all L1-dcache accesses  ( +-  2,07% )
+            38.090      L1-dcache-loads
+
+         0,0009093 +- 0,0000373 seconds time elapsed  ( +-  4,10% )
+
+----------ROW 100-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           101.222      instructions:u                                                       ( +-  0,00% )
+             1.717      L1-dcache-loads-misses           #    7,43% of all L1-dcache accesses  ( +-  2,30% )
+            23.120      L1-dcache-loads
+
+          0,001406 +- 0,000137 seconds time elapsed  ( +-  9,72% )
+
+-----COL 100-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+         3.342.494      instructions:u                                                       ( +-  0,00% )
+             6.038      L1-dcache-loads-misses           #    0,85% of all L1-dcache accesses  ( +-  0,80% )
+           712.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+         0,0031524 +- 0,0000911 seconds time elapsed  ( +-  2,89% )
+
+-----COL 200-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+         6.616.504      instructions:u                                                       ( +-  0,00% )
+            14.322      L1-dcache-loads-misses           #    1,02% of all L1-dcache accesses  ( +-  0,36% )
+         1.408.156      L1-dcache-loads                                                      ( +-  0,00% )
+
+         0,0045543 +- 0,0000842 seconds time elapsed  ( +-  1,85% )
+
+-----COL 300-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+         6.930.415      instructions:u                                                       ( +-  0,00% )
+            20.707      L1-dcache-loads-misses           #    0,98% of all L1-dcache accesses  ( +-  0,26% )
+         2.104.153      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,003013 +- 0,000169 seconds time elapsed  ( +-  5,62% )
+
+-----COL 500-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+        11.498.434      instructions:u                                                       ( +-  0,00% )
+            33.102      L1-dcache-loads-misses           #    0,95% of all L1-dcache accesses  ( +-  0,13% )
+         3.496.160      L1-dcache-loads
+
+          0,003233 +- 0,000155 seconds time elapsed  ( +-  4,81% )
+
+----------ROW 1000-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           101.225      instructions:u                                                       ( +-  0,00% )
+             1.725      L1-dcache-loads-misses           #    7,46% of all L1-dcache accesses  ( +-  2,67% )
+            23.120      L1-dcache-loads
+
+          0,001784 +- 0,000132 seconds time elapsed  ( +-  7,42% )
+
+-----COL 100-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+        32.745.580      instructions:u                                                       ( +-  0,00% )
+         1.050.499      L1-dcache-loads-misses           #   15,12% of all L1-dcache accesses  ( +-  0,01% )
+         6.949.160      L1-dcache-loads
+
+          0,004522 +- 0,000212 seconds time elapsed  ( +-  4,69% )
+
+-----COL 200-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+        65.719.682      instructions:u                                                       ( +-  0,00% )
+         2.109.153      L1-dcache-loads-misses           #   15,12% of all L1-dcache accesses  ( +-  1,45% )
+        13.945.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,007433 +- 0,000307 seconds time elapsed  ( +-  4,13% )
+
+-----COL 300-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+        68.823.681      instructions:u                                                       ( +-  0,00% )
+         3.173.487      L1-dcache-loads-misses           #   15,15% of all L1-dcache accesses  ( +-  0,01% )
+        20.941.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,014042 +- 0,000349 seconds time elapsed  ( +-  2,49% )
+
+-----COL 500-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       114.791.877      instructions:u                                                       ( +-  0,00% )
+         5.300.159      L1-dcache-loads-misses           #   15,17% of all L1-dcache accesses  ( +-  0,13% )
+        34.933.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,019135 +- 0,000487 seconds time elapsed  ( +-  2,54% )
+
+----------ROW 5000-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           101.224      instructions:u                                                       ( +-  0,00% )
+             1.761      L1-dcache-loads-misses           #    7,62% of all L1-dcache accesses  ( +-  2,72% )
+            23.120      L1-dcache-loads
+
+          0,001397 +- 0,000132 seconds time elapsed  ( +-  9,44% )
+
+-----COL 100-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       163.425.975      instructions:u                                                       ( +-  0,00% )
+         5.246.668      L1-dcache-loads-misses           #   15,13% of all L1-dcache accesses  ( +-  3,40% )
+        34.669.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,02289 +- 0,00355 seconds time elapsed  ( +- 15,51% )
+
+-----COL 200-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       328.399.963      instructions:u                                                       ( +-  0,00% )
+        11.360.314      L1-dcache-loads-misses           #   16,31% of all L1-dcache accesses  ( +-  2,25% )
+        69.665.092      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,04201 +- 0,00359 seconds time elapsed  ( +-  8,55% )
+
+-----COL 300-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       343.904.351      instructions:u                                                       ( +-  0,00% )
+        17.488.644      L1-dcache-loads-misses           #   16,71% of all L1-dcache accesses  ( +-  4,62% )
+       104.641.913      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,04815 +- 0,00254 seconds time elapsed  ( +-  5,28% )
+
+-----COL 500-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       573.871.801      instructions:u                                                       ( +-  0,00% )
+        30.024.908      L1-dcache-loads-misses           #   17,19% of all L1-dcache accesses  ( +-  5,63% )
+       174.651.785      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,07518 +- 0,00192 seconds time elapsed  ( +-  2,55% )
+
+----------ROW 10000-------------
+-----COL 1-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+           101.222      instructions:u                                                       ( +-  0,00% )
+             2.124      L1-dcache-loads-misses           #    9,19% of all L1-dcache accesses  ( +-  2,24% )
+            23.120      L1-dcache-loads
+
+         0,0008875 +- 0,0000285 seconds time elapsed  ( +-  3,21% )
+
+-----COL 100-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       326.775.959      instructions:u                                                       ( +-  0,00% )
+        10.497.446      L1-dcache-loads-misses           #   15,14% of all L1-dcache accesses  ( +-  2,00% )
+        69.319.160      L1-dcache-loads                                                      ( +-  0,00% )
+
+          0,038037 +- 0,000978 seconds time elapsed  ( +-  2,57% )
+
+-----COL 200-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       656.749.926      instructions:u                                                       ( +-  0,00% )
+        22.216.253      L1-dcache-loads-misses           #   15,95% of all L1-dcache accesses  ( +-  4,18% )
+       139.314.884      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,08587 +- 0,00382 seconds time elapsed  ( +-  4,45% )
+
+-----COL 300-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+       687.753.788      instructions:u                                                       ( +-  0,00% )
+        38.471.360      L1-dcache-loads-misses           #   18,38% of all L1-dcache accesses  ( +-  3,89% )
+       209.310.956      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,10059 +- 0,00360 seconds time elapsed  ( +-  3,58% )
+
+-----COL 500-----
+└─$ sudo perf stat -r 10 -e instructions:u,L1-dcache-loads-misses:u,L1-dcache-loads:u ./cachecolumnmajor
+
+ Performance counter stats for './cachecolumnmajor' (10 runs):
+
+     1.147.721.706      instructions:u                                                       ( +-  0,00% )
+        62.069.316      L1-dcache-loads-misses           #   17,77% of all L1-dcache accesses  ( +-  4,47% )
+       349.302.913      L1-dcache-loads                                                      ( +-  0,00% )
+
+           0,16594 +- 0,00444 seconds time elapsed  ( +-  2,68% )

@@ -124,10 +124,254 @@ Código más fácilmente paralelizable|Uso de mayor número de registros|
 
 #### Paso 1 ([LoopUnroll_Step1.s](./Desenrrollado/LoopUnroll_Step1.s)): Replicar código
 
+- ¿Cuántas veces se ejecutará el bucle?
+    - Considerando que se ha replicado el contenido del bucle 3 veces (un total de 4 iteraciones desenrrolladas), el bucle se ejecutará 5 veces
+- Direcciones utilizadas en base al iterador:
+    - `[0(r1), 8(r1), 16(r1), 24(r1)]`
+- Incremento del iterador.
+    - Con `daddi r1,r1,32` se entiende que aumenta 4x el incremento, ya que originalmente se incrementa en 8
+
 #### Paso 2 ([LoopUnroll_Step2.s](./Desenrrollado/LoopUnroll_Step2.s)): Utilizar más registros
+
+Datos importantes:
+- Identificar operaciones de carga y almacenamiento.
+- Utilizar distintos registros para dichas instrucciones.
+    - Los registros empleados cambiarán entre iteraciones, de esta forma se reducen las interdependencias
 
 #### Paso 3 ([LoopUnroll_Step3.s](./Desenrrollado/LoopUnroll_Step3.s)): Agrupar instrucciones
 
+Datos importantes:
+- Identificar operaciones de carga y almacenamiento.
+- Agrupar dichas instrucciones.
+
 #### Paso 4 ([LoopUnroll_Step4.s](./Desenrrollado/LoopUnroll_Step4.s)): Re-ordenar instrucciones
 
-WIP
+Datos importantes:
+- Analizar paradas en paso anterior.
+- Adelantar instrucciones en caso de espera.
+- Controlar siempre las direcciones utilizadas en base al iterador
+    - `[0(r1), 8(r1), -16(r1), -8(r1), etc]`
+- Utilizar "Delay Slot" si es posible.
+
+### Simular las 5 versiones de código
+
+<div align="center">
+	<table>
+		<th> 'Before' </th>
+		<th> Paso 1 </th>
+		<th> Paso 2 </th>
+		<th> Paso 3 </th>
+		<th> Paso 4 </th>
+		</tr>
+		<tr>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    312 Cycles<br>
+                    105 Instructions<br>
+                    2.971 Cycles Per Instruccion (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    184 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    0 Structural Stalls<br>
+                    19 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    40 Bytes<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    237 Cycles<br>
+                    75 Instructions<br>
+                    3.160 Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    154 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    0 Structural Stalls<br>
+                    4 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    237 Cycles<br>
+                    75 Instructions<br>
+                    3.160 Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    154 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    0 Structural Stalls<br>
+                    4 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    112 Cycles<br>
+                    75 Instructions<br>
+                    1.493 Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    24 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    5 Structural Stalls<br>
+                    4 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    108 Cycles<br>
+                    75 Instructions<br>
+                    1.521* Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    24 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    5 Structural Stalls<br>
+                    4 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
+
+*Si se aplica la fórmula $CPI=C/I$ realmente CPI = 1.440, lo cual tiene más sentido
+
+#### ¿Cuántas veces se ejecuta el bucle en las versiones desenrolladas?
+
+Medible a través de la estadística Branch Taken Stalls:
+
+<div align="center">
+	<table>
+		<th> 'Before' </th>
+		<th> Paso 1 </th>
+		<th> Paso 2 </th>
+		<th> Paso 3 </th>
+		<th> Paso 4 </th>
+		</tr>
+		<tr>
+			<td>
+				<p>
+                    19 Branch Taken Stalls<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    4 Branch Taken Stalls<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    4 Branch Taken Stalls<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    4 Branch Taken Stalls<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    4 Branch Taken Stalls<br>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
+
+#### ¿Qué versión tiene un mejor rendimiento?¿Por qué?
+
+Considerando como medida de rendimiento de un procesador los CPI (**número promedio de ciclos de reloj tomados para ejecutar una instrucción de un programa**), el mejor resultado es obtenido para el paso 3, pero un pequeño matiz con el número de ciclos cabe esperar que el paso 4 resulta ser en un programa con menor número de ciclos en el momento de ejecución, y calculando a mano el CPI resulta ser un número menor, por lo que <ins>es el último paso con mejor rendimiento</ins>.
+
+#### La simulación de `LoopUnroll_Step4.s` es correcta si no habilitamos "Delay Slot"?
+
+Afirmativo, tras ejecutar el mismo programa cambiando el estado de la mejora, el contenido del registro F16 es el mismo:
+
+|Sin DS|Con DS|
+|:----:|:----:|
+|F16= 0000001.74000000|F16= 0000001.74000000|
+
+Y las diferencias de rendimiento son notorias:
+
+<div align="center">
+	<table>
+		<th> DS Apagado </th>
+		<th> DS Encendido </th>
+		</tr>
+		<tr>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    108 Cycles<br>
+                    75 Instructions<br>
+                    1.521 Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    24 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    5 Structural Stalls<br>
+                    4 Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+			<td>
+				<p>
+                    <span style="color: #ff0000">Execution</span><br>
+                    108 Cycles<br>
+                    75 Instructions<br>
+                    1.440 Cycles Per Instruction (CPI)<br>
+                    <br>
+                    <p><span style="color: #ff0000">Stalls</span><br>
+                    24 RAW Stalls<br>
+                    0 WAW Stalls<br>
+                    0 WAR Stalls<br>
+                    5 Structural Stalls<br>
+                    0* Branch Taken Stalls<br>
+                    0 Branch Misprediction Stalls<br>
+                    <br>
+                    <p><span style="color: #ff0000">Code size</span><br>
+                    76 Bytes<br>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
+*Debido a que el DS está activado, se decide si el código salta a la dirección de memoria de <code>loop</code> mucho antes, debido al "slot" extra que se ejecuta por delante. Se salta un total de 4 veces igualmente, ¡pero no hay esperas para ello!
+
+#### ¿En qué porcentaje aumenta el tamaño del código?
+
+$$
+\dfrac{76 \text{\ bytes}}{40 \text{\ bytes}} - 1 = 0.9 \equiv +90\% \text{\ aumentó el tamaño del código}
+$$

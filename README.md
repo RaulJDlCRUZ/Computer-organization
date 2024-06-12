@@ -20,6 +20,17 @@ Laboratorio de Organización de Computadores - Curso 2021/22
 
 ### Sesion II
 
+[Desenrollado de bucles con WinMIPS64](./Bloque%20II/Sesion%20II/SesionII.md)
+
 ### Módulo II (evaluable): [Simulaciones con WinMIPS64r](/Bloque%20II/modulo2/modulo2.md)
 
 ## Bloque III: Prácticas de rendimiento
+
+El entorno de trabajo para estas prácticas será GNU/Linux, puesto que las herramientas utilizadas no tienen un equivalente en Windows ni MAC. Además debéis hacerlas sobre vuestros propios ordenadores ya que no es posible el uso de máquinas virtuales, que ocultan el acceso a los contadores de rendimiento disponibles en los procesadores, y por lo tanto el uso de las máquinas de los laboratorios.
+
+### Sesión I
+[Monitorización del rendimiento en tiempo de ejecución I](./Bloque%20III/Sesion%20I/SesionI.md)
+
+### Sesion II
+
+[Monitorización del rendimiento en tiempo de ejecución II](./Bloque%20III/Sesion%20II/SesionII.md)

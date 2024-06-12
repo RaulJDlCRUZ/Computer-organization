@@ -401,4 +401,8 @@ $$
 \dfrac{Nciclos_{anterior}}{Nciclos_{nuevo}}=\dfrac{389}{126}=3,087302
 $$
 
-<h3 style="text-align: center;"><b>El nuevo programa ensamblador es 3 veces más rápido que el base</b></h3>
+<div align="center">
+	<h3>
+		<b>El nuevo programa ensamblador es 3 veces más rápido que el base</b>
+	</h3>
+</div>
