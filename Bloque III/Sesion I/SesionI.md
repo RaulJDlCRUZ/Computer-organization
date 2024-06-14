@@ -405,8 +405,6 @@ Performance counter stats for './cachesize' (10 runs):
 	</table>
 </div>
 
-El extracto completo de terminal se encuentra [aquí](./Caso%202/terminal_outputs/estudio2filas.txt)
-
 Hemos recopilado toda la información y la hemos adjuntado en la tabla que se puede ver arriba. Como podemos apreciar, la tasa de fallos para el acceso a caché L1d alcanza su valor máximo para el valor de la macro **STRIDE = 64**.
 La caída repentina se produce para STRIDE=256, cuando ya se ha excedido el valor de nuestra caché L1d (=128 KiB).
 
@@ -621,7 +619,7 @@ Código completo: [cache_row_major.c](./Caso%202/cache_row_major.c)
   </table>
 </div>
 
-El extracto completo de terminal se encuentra [aquí](./Caso%202/terminal_outputs/estudio2columnas.txt)
+El extracto completo de terminal se encuentra [aquí](./Caso%202/terminal_outputs/estudio2filas.txt)
 
 #### Recorrido por columnas
 
@@ -806,6 +804,8 @@ Código completo: [cache_column_major.c](./Caso%202/cache_column_major.c)
     </tr>
   </table>
 </div>
+
+El extracto completo de terminal se encuentra [aquí](./Caso%202/terminal_outputs/estudio2columnas.txt)
 
 Una vez recopilamos los datos de la salida de texto de cada una de las ejecuciones del programa y su obtención de su tasa de fallos en caché, podemos apreciar que creemos que **resulta más fácil para la caché la ejecución por filas**. Esta elección se sostiene al observar la cantidad de fallos que resultan con el conjunto de ejecuciones de una manera y de otra:
 

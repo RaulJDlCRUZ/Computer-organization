@@ -1,0 +1,76 @@
+<svg fill="none" viewBox="0 0 600 600" width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        :root {
+            --mark-bg-color1: #00FF00;
+            --mark-bg-color2: #00FFFF;
+        }
+        text {
+            fill: black;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --mark-bg-color1: #009900;
+                --mark-bg-color2: #009999;
+            }
+            text {
+                fill: white;
+            }
+        }
+        .centered {
+          display: inline-block;
+					width: 100%;
+				}
+				.left-aligned {
+					text-align: left;
+					font-family: monospace;
+				}
+        .mark1 {
+            background-color: var(--mark-bg-color1);
+        }
+        .mark2 {
+            background-color: var(--mark-bg-color2);
+        }
+      </style>
+      <div class="centered">
+        <div class="left-aligned">
+          <pre>
+            <code>
+              0000000000001159 &lt;add_array&gt;:
+              long add_array(int* A, int size)
+              {
+                unsigned i;
+                long result;
+                
+                for (i = 0; i &lt; size; i++)
+                  1159:	85 f6                	test   %esi,%esi
+                  115b:	74 23                	je     1180 &lt;add_array+0x27&gt;
+                  115d:	48 89 f8             	mov    %rdi,%rax
+                  1160:	8d 56 ff             	lea    -0x1(%rsi),%edx
+                  1163:	48 8d 74 97 04       	lea    0x4(%rdi,%rdx,4),%rsi
+                  1168:	ba 00 00 00 00       	mov    $0x0,%edx
+                    result += A[i];
+                  116d:	48 63 08             	<mark class="mark2">movslq (%rax),%rcx</mark>
+                  1170:	48 01 ca             	add    %rcx,%rdx
+                for (i = 0; i &lt; size; i++)
+                  1173:	48 83 c0 04          	add    $0x4,%rax
+                  1177:	48 39 f0             	cmp    %rsi,%rax
+                  117a:	75 f1                	jne    116d &lt;add_array+0x14&gt;
+                
+                return result;
+              }
+                  117c:	48 89 d0             	mov    %rdx,%rax
+                  117f:	c3                   	ret
+                for (i = 0; i &lt; size; i++)
+                  1180:	ba 00 00 00 00       	mov    $0x0,%edx
+                return result;
+                  1185:	eb f5                	jmp    117c &lt;add_array+0x23&gt;
+            </code>
+          </pre>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
