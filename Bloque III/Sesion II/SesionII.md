@@ -363,14 +363,17 @@ En el código [`array.c`](array.c) encontramos dos sumas en el cuerpo del bucle:
 
   `array_O0.s`
   ---
-  ![Texto SVG - 0](./svg/zero_mem.svg)
-
+  <p align="center" width="100%">
+    <img width="90%" src="./png/zero_mem.png"/>
+  </p>
   Vamos a considerar `117f` como lectura en memoria ya que se debe acceder al elemento (que se acumula en _`result`_) que está en la dirección de memoria almacenada en `%rax`, ya que hemos mencionado anteriormente que en `117c` se está sumando 4 a una dirección de la pila. 
 
   También consideramos `118e` como una lectura de memoria debido a que necesitamos conocer el elemento almacenado en esa posición de memoria (puntero base con offset `-0x4`) para poder efectuar la comparación.
 
   `array_O1.s`
   ---
-  ![Texto SVG - 1](./svg/one_mem.svg)
+  <p align="center" width="100%">
+    <img width="90%" src="./png/one_mem.png"/>
+  </p>
 
   De la misma manera que consideramos en el código sin optimización la instrucción `117f`, vamos a considerar como una lectura a memoria `116d`, ya que la única diferencia es la instrucción, que equivale a "_mover double con extensión de signo a quad_".
